@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: cl.edu.testing.stack.SimpleStackTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 0.001 s -- in cl.edu.testing.stack.SimpleStackTest

@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: cl.edu.testing.cart.ShoppingCartTddTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 5, Time elapsed: 0.060 s -- in cl.edu.testing.cart.ShoppingCartTddTest

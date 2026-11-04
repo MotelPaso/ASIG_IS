@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: cl.edu.testing.books.BookSearchMockitoTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 4, Time elapsed: 1.527 s -- in cl.edu.testing.books.BookSearchMockitoTest

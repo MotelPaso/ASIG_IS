@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: cl.edu.testing.orders.OrderServiceMockitoTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.001 s -- in cl.edu.testing.orders.OrderServiceMockitoTest
