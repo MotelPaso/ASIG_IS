@@ -38,6 +38,3 @@ La ejecución inicial de `mvn test` debe ejecutar el ejemplo con Mockito; las di
 
 Sin Maven instalado en la terminal, use la ventana Maven del IDE para ejecutar `test`; las dependencias se descargan la primera vez que haya acceso a Internet.
 
-## Advertencia
-
-No se incluye la solución ni pruebas ya resueltas. Cada test debe contener aserciones sobre **tipo, lexema, cantidad y/o posición**; evitar pruebas que solo ejecutan código sin comprobar un resultado.

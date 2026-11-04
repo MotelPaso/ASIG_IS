@@ -1,6 +1,12 @@
 # Guía de laboratorio: calidad de un analizador léxico
 
-**Asignatura:** Ingeniería de Software · **Lenguaje:** Java 17 · **Herramientas:** Maven, JUnit 4, Mockito · **Entorno:** IntelliJ IDEA o VS Code.
+**Asignatura:** Ingeniería de Software · 
+
+**Lenguaje:** Java 17 · 
+
+**Herramientas:** Maven, JUnit 4, Mockito ·
+
+**Entorno:** IntelliJ IDEA o VS Code.
 
 ## 1. Contexto y objetivo
 
@@ -64,7 +70,7 @@ Se entrega la clase `LexicalAnalyzerStudentTest` con diez métodos pendientes. *
 
 Los tests deben comparar **salida observada con salida esperada**; un `assertNotNull` aislado no es suficiente. Pueden crear funciones auxiliares de aserción para disminuir duplicación en los tests. **Se permiten pruebas adicionales** de mayúsculas, frontera entre palabras, entradas repetidas, números al comienzo y errores consecutivos.
 
-## 4. Mockito (simple, como en la clase)
+## 4. Mockito (como lo realizado en clases)
 
 Revise `MockitoExampleTest`: usa `@Before`, `mock`, `when(...).thenReturn(...)`, `assertEquals` y `verify`. Este ejemplo ejecutable **ya está resuelto**. Su tarea adicional es crear `KeywordCatalogMockTest` para sustituir `KeywordCatalog` por un mock y verificar que la clasificación depende de su resultado, sin usar la implementación concreta de palabras reservadas.
 
@@ -146,7 +152,7 @@ Si reemplaza o divide la clase en varias, **no compare ingenuamente LCOM1 o CBO 
 
 Responda en 350–600 palabras: ¿cómo era la estructura inicial?, ¿qué defectos muestran las pruebas?, ¿qué mejora y qué empeora tras refactorizar?, ¿qué indican LOC, LCOM1, CBO y CC en este caso?, ¿qué aspectos de calidad **no** capturan estas métricas?, ¿considera mantenible, testeable y extensible la solución final? Fundamente con ejemplos de métodos y pruebas. **No afirme que un código es bueno solo porque una métrica es baja.**
 
-## 8. Entregables y evaluación (100 puntos)
+## 8. Entregables y evaluación
 
 - **30 puntos:** diez tests JUnit 4 activos y con aserciones útiles (3 cada uno).
 - **10 puntos:** test propio con Mockito: stub, verificación e interpretación.

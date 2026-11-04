@@ -1,7 +1,0 @@
-cl/edu/testing/stack/SimpleStackTest.class
-cl/edu/testing/books/BookSearchManualTest.class
-cl/edu/testing/books/BookSearchMockitoTest.class
-cl/edu/testing/orders/OrderServiceIntegrationTest.class
-cl/edu/testing/cart/ShoppingCartTddTest.class
-cl/edu/testing/orders/OrderServiceMockitoTest.class
-cl/edu/testing/books/FakeBookService.class
