@@ -69,7 +69,7 @@ CBO incluyendo `String` y biblioteca estándar; y CC con `if`, `while`, `case`,
 | Suma de CC | 21 | 32 | predicados explícitos agregan decisiones |
 | Tests aprobados / ejecutados | 4/10 diagnóstico | 17/17 | contrato cubierto y verde |
 
-La tabla LCOM1 final contiene `tokenize → ∅` y `readWord → catalog`; su único
+La tabla LCOM1 final contiene `tokenize -> vacio` y `readWord -> catalog`; su único
 par es disjunto, por lo que LCOM1 = 1. El máximo de CC corresponde al `switch`
 plano de `symbolType`, cuyo valor sobreestima la complejidad cognitiva real:
 cada `case` representa un mapeo directo.
