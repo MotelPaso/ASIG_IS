@@ -339,6 +339,6 @@ pandoc INFORME.md -o INFORME.pdf --pdf-engine=pdflatex
 | Correcciones y pruebas (10 + 5 + Mockito) | `6eadf8e` |
 | Métricas finales e informe | `f29e032` |
 | Checklist y primera exportación del PDF | `3c9ffcf` |
-| Revisión: tablas, grafos, evidencia roja y correcciones del informe | commit de esta revisión |
+| Revisión: tablas, grafos, evidencia roja y correcciones del informe | `dcc5940` |
 
 El detalle completo está en `git log`.
