@@ -65,7 +65,7 @@ public class LexicalAnalyzer {
     }
 
     private static boolean isAsciiLetter(char current) {
-        return current >= 'A' && current <= 'Z' || current >= 'a' && current <= 'z';
+        return (current >= 'A' && current <= 'Z') || (current >= 'a' && current <= 'z');
     }
 
     private static boolean isAsciiDigit(char current) {

@@ -1,0 +1,25 @@
+digraph symbolType_final {
+  rankdir=LR;
+  graph [nodesep=0.25, ranksep=0.45];
+  node [shape=box, fontname="Helvetica", fontsize=10, margin="0.06,0.03"];
+  edge [fontname="Helvetica", fontsize=11];
+
+  inicio [shape=oval, label="inicio"];
+  sw     [shape=diamond, label="switch (current)"];
+  r1     [label="return ASSIGN"];
+  r2     [label="return PLUS"];
+  r3     [label="return LPAREN"];
+  r4     [label="return RPAREN"];
+  r5     [label="return SEMICOLON"];
+  r6     [label="return ERROR"];
+  fin    [shape=oval, label="fin"];
+
+  inicio -> sw;
+  sw -> r1 [label="="];
+  sw -> r2 [label="+"];
+  sw -> r3 [label="("];
+  sw -> r4 [label=")"];
+  sw -> r5 [label=";"];
+  sw -> r6 [label="default"];
+  r1 -> fin; r2 -> fin; r3 -> fin; r4 -> fin; r5 -> fin; r6 -> fin;
+}

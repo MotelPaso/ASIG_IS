@@ -1,0 +1,60 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------< cl.edu.metrics:analizador-lexico-metricas >--------------
+[INFO] Building analizador-lexico-metricas 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 24451 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] Loaded 64 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ analizador-lexico-metricas ---
+[INFO] Deleting /home/motelpaso/Work/ASIG_IS/analizador-lexico/target
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ analizador-lexico-metricas ---
+[INFO] skip non existing resourceDirectory /home/motelpaso/Work/ASIG_IS/analizador-lexico/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ analizador-lexico-metricas ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 9 source files with javac [debug release 17] to target/classes
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ analizador-lexico-metricas ---
+[INFO] skip non existing resourceDirectory /home/motelpaso/Work/ASIG_IS/analizador-lexico/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ analizador-lexico-metricas ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 4 source files with javac [debug release 17] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ analizador-lexico-metricas ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junit4.JUnit4Provider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running cl.edu.metrics.lexer.KeywordCatalogMockTest
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/motelpaso/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.15/byte-buddy-agent-1.14.15.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe$Dispatcher$CreationAction (file:/home/motelpaso/.m2/repository/net/bytebuddy/byte-buddy/1.14.15/byte-buddy-1.14.15.jar)
+WARNING: Please consider reporting this to the maintainers of class net.bytebuddy.dynamic.loading.ClassInjector$UsingUnsafe$Dispatcher$CreationAction
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.662 s -- in cl.edu.metrics.lexer.KeywordCatalogMockTest
+[INFO] Running cl.edu.metrics.lexer.LexicalAnalyzerExtraTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0 s -- in cl.edu.metrics.lexer.LexicalAnalyzerExtraTest
+[INFO] Running cl.edu.metrics.lexer.LexicalAnalyzerStudentTest
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 s -- in cl.edu.metrics.lexer.LexicalAnalyzerStudentTest
+[INFO] Running cl.edu.metrics.lexer.MockitoExampleTest
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.010 s -- in cl.edu.metrics.lexer.MockitoExampleTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 17, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.148 s
+[INFO] Finished at: 2026-11-11T10:51:00-03:00
+[INFO] ------------------------------------------------------------------------

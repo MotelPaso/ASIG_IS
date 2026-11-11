@@ -7,6 +7,9 @@ Los cambios de producción y pruebas están descritos en `PLAN.md`.
 No se incluyen `docs/GUIA_ESTUDIANTES.md` ni `docs/PLANTILLA_INFORME.md`
 (modificados por el usuario).
 
+**Nota:** los pasos 2–12 se consolidaron en dos commits (`20cea95` y `6eadf8e`).
+El paso 15 regeneró la evidencia roja real y corrigió el informe tras la revisión.
+
 ---
 
 ## Paso 0 — Documentos de trabajo
@@ -48,8 +51,9 @@ diagnóstico y queda respaldado el fuente original.
 ## Paso 2 — Arreglar el entorno de pruebas
 
 - [x] Agregar `argLine` a `maven-surefire-plugin` en `pom.xml`.
-- [x] `mvn test` → Mockito verde; la corrida final ejecuta 17 pruebas sin fallos.
-      6 de las 10 pruebas del alumno fallan, 4 pasan).
+- [x] `mvn test` sobre el estado inicial → Mockito verde; de las 10 pruebas del
+      alumno pasan 4 y fallan 6. Log real en `docs/evidencia/test-inicial.log`
+      (regenerado en el paso 15).
 - [x] Guardar salida en `docs/evidencia/test-inicial.md`.
 - [x] Commit: `build: habilitar Mockito en JDK 27`.
 
@@ -163,3 +167,23 @@ y las fallas coinciden exactamente con el diagnóstico.
 - [x] Redactar la evaluación de calidad (350–600 palabras).
 - [x] Exportar a PDF.
 - [x] Commit: `docs: métricas e informe final`.
+
+---
+
+## Paso 15 — Correcciones de la revisión
+
+- [x] Regenerar `test-inicial.log` con `mvn clean test` sobre el código inicial:
+      17 ejecutadas, 10 fallos.
+- [x] Reescribir la sección 4 con tablas LCOM1 (inicial y final), lista CBO con
+      evidencia y CC por método.
+- [x] Generar los grafos de flujo (`tokenize` inicial y `symbolType` final) con
+      Graphviz.
+- [x] Ampliar la sección 5 a 466 palabras y corregir «LOC 68 a 80» por «68 a 70».
+- [x] Declarar la convención de `case` (cada etiqueta cuenta 1).
+- [x] Añadir paréntesis en `isAsciiLetter`; regenerar pruebas y métricas.
+- [x] Regenerar `metricas-final.md`, `test-final.log`, `test-final.md` y el PDF.
+- [x] Actualizar `PLAN.md` con los resultados reales.
+- [x] Commit: `docs: corregir informe y evidencia tras revisión`.
+
+**Criterio de aceptación:** `mvn test` 17/17, informe con tablas y grafos,
+sección 5 entre 350 y 600 palabras, PDF regenerado.

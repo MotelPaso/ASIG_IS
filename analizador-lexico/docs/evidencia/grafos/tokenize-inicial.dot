@@ -1,0 +1,59 @@
+digraph tokenize_inicial {
+  rankdir=TB;
+  graph [nodesep=0.25, ranksep=0.30];
+  node [shape=box, fontname="Helvetica", fontsize=10, margin="0.06,0.03"];
+  edge [fontname="Helvetica", fontsize=8];
+
+  inicio [shape=oval, label="inicio"];
+  init   [label="source = input\ncursor = 0"];
+  w      [shape=diamond, label="cursor < len?"];
+  ws     [shape=diamond, label="espacio?"];
+  letra  [shape=diamond, label="letra?"];
+  digito [shape=diamond, label="digito?"];
+  eq     [shape=diamond, label="'='?"];
+  plus   [shape=diamond, label="'+'?"];
+  lp     [shape=diamond, label="'('?"];
+  rp     [shape=diamond, label="')'?"];
+  semi   [shape=diamond, label="';'?"];
+  err    [label="cursor++\n(descarta)"];
+  a1     [label="cursor++"];
+  a2     [label="readWord()"];
+  a3     [label="readNumber()"];
+  a4     [label="add ASSIGN"];
+  a5     [label="add PLUS"];
+  a6     [label="add LPAREN"];
+  a7     [label="add RPAREN"];
+  a8     [label="add SEMICOLON"];
+  dbg    [shape=diamond, label="debugEnabled?"];
+  rep    [label="lastReport =\n\"Tokens...\""];
+  ret    [label="return copia"];
+  fin    [shape=oval, label="fin"];
+
+  inicio -> init -> w;
+  w -> ws [label="si"];
+  ws -> a1 [label="si"];
+  ws -> letra [label="no"];
+  letra -> a2 [label="si"];
+  letra -> digito [label="no"];
+  digito -> a3 [label="si"];
+  digito -> eq [label="no"];
+  eq -> a4 [label="si"];
+  eq -> plus [label="no"];
+  plus -> a5 [label="si"];
+  plus -> lp [label="no"];
+  lp -> a6 [label="si"];
+  lp -> rp [label="no"];
+  rp -> a7 [label="si"];
+  rp -> semi [label="no"];
+  semi -> a8 [label="si"];
+  semi -> err [label="no"];
+
+  a1 -> w; a2 -> w; a3 -> w; a4 -> w; a5 -> w;
+  a6 -> w; a7 -> w; a8 -> w; err -> w;
+
+  w -> dbg [label="no"];
+  dbg -> rep [label="si"];
+  dbg -> ret [label="no"];
+  rep -> ret;
+  ret -> fin;
+}

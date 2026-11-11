@@ -228,3 +228,20 @@ Interpretaciones que el informe debe sostener con evidencia:
 - Análisis sintáctico, comentarios, decimales y operadores adicionales.
 - Contrato para `null` (fuera de la especificación de la práctica).
 - Cambios en `DefaultKeywordCatalog`, `TokenFormatter` o `LexicalReportService`.
+
+## 8. Resultados reales (verificados)
+
+| Indicador | Inicial | Final real |
+| --- | ---: | ---: |
+| LOC de `LexicalAnalyzer` | 68 | 70 |
+| LOC total del paquete | 129 | 131 |
+| LCOM1 | 6 | 1 |
+| CBO | 7 | 6 |
+| CC máxima | 11 (`tokenize`) | 6 (`symbolType`) |
+| Suma de CC | 21 | 32 |
+| Tests | 4/10 (diagnóstico) | 17/17 |
+
+Diferencias con la estimación: la suma de CC resultó 32 (se estimaban ~29)
+porque los predicados ASCII usan más `&&`/`||` de los previstos; LOC quedó en 70,
+dentro del rango estimado. La convención de conteo de `case` se declara en el
+informe: cada etiqueta cuenta 1, de modo que `symbolType` (5 `case`) tiene CC 6.
