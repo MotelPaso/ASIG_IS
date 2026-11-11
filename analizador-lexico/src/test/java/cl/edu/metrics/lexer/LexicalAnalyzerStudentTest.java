@@ -1,15 +1,12 @@
 package cl.edu.metrics.lexer;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.List;
+
 import static org.junit.Assert.*;
 
-/**
- * Actividad: reemplace @Ignore por @Test activo y escriba las aserciones.
- * Los contratos esperados se describen en docs/GUIA_ESTUDIANTES.md.
- * Se dejan cuerpos vacios intencionalmente: NO son soluciones.
- */
 public class LexicalAnalyzerStudentTest {
     private LexicalAnalyzer lexer;
 
@@ -18,33 +15,79 @@ public class LexicalAnalyzerStudentTest {
         lexer = new LexicalAnalyzer(new DefaultKeywordCatalog());
     }
 
-    @Ignore("Pendiente 01: cadena vacia") @Test
-    public void test01EmptyInput() { fail("Implementar test01"); }
+    @Test
+    public void test01EmptyInput() {
+        assertTokens(List.of(), lexer.tokenize(""));
+    }
 
-    @Ignore("Pendiente 02: palabra reservada exacta") @Test
-    public void test02ExactKeyword() { fail("Implementar test02"); }
+    @Test
+    public void test02ExactKeyword() {
+        assertTokens(List.of(
+                new Token(TokenType.KEYWORD, "let", 0),
+                new Token(TokenType.KEYWORD, "print", 4)), lexer.tokenize("let print"));
+    }
 
-    @Ignore("Pendiente 03: identificador con prefijo let") @Test
-    public void test03IdentifierStartingWithLet() { fail("Implementar test03"); }
+    @Test
+    public void test03IdentifierStartingWithLet() {
+        assertTokens(List.of(new Token(TokenType.IDENTIFIER, "letter", 0)), lexer.tokenize("letter"));
+    }
 
-    @Ignore("Pendiente 04: identificador con guion bajo") @Test
-    public void test04IdentifierWithUnderscore() { fail("Implementar test04"); }
+    @Test
+    public void test04IdentifierWithUnderscore() {
+        assertTokens(List.of(new Token(TokenType.IDENTIFIER, "_total2", 0)), lexer.tokenize("_total2"));
+    }
 
-    @Ignore("Pendiente 05: entero de varios digitos") @Test
-    public void test05MultiDigitInteger() { fail("Implementar test05"); }
+    @Test
+    public void test05MultiDigitInteger() {
+        assertTokens(List.of(new Token(TokenType.INTEGER, "2026", 0)), lexer.tokenize("2026"));
+    }
 
-    @Ignore("Pendiente 06: simbolos") @Test
-    public void test06Punctuation() { fail("Implementar test06"); }
+    @Test
+    public void test06Punctuation() {
+        assertTokens(List.of(
+                new Token(TokenType.ASSIGN, "=", 0),
+                new Token(TokenType.PLUS, "+", 1),
+                new Token(TokenType.LPAREN, "(", 2),
+                new Token(TokenType.RPAREN, ")", 3),
+                new Token(TokenType.SEMICOLON, ";", 4)), lexer.tokenize("=+();"));
+    }
 
-    @Ignore("Pendiente 07: expresion completa") @Test
-    public void test07CompleteExpression() { fail("Implementar test07"); }
+    @Test
+    public void test07CompleteExpression() {
+        assertTokens(List.of(
+                new Token(TokenType.KEYWORD, "let", 0),
+                new Token(TokenType.IDENTIFIER, "total", 4),
+                new Token(TokenType.ASSIGN, "=", 10),
+                new Token(TokenType.INTEGER, "12", 12),
+                new Token(TokenType.PLUS, "+", 15),
+                new Token(TokenType.IDENTIFIER, "valor", 17),
+                new Token(TokenType.SEMICOLON, ";", 22)), lexer.tokenize("let total = 12 + valor;"));
+    }
 
-    @Ignore("Pendiente 08: espacios y saltos") @Test
-    public void test08WhitespaceAndPositions() { fail("Implementar test08"); }
+    @Test
+    public void test08WhitespaceAndPositions() {
+        assertTokens(List.of(
+                new Token(TokenType.KEYWORD, "print", 2),
+                new Token(TokenType.LPAREN, "(", 8),
+                new Token(TokenType.IDENTIFIER, "x", 10),
+                new Token(TokenType.RPAREN, ")", 12)), lexer.tokenize(" \nprint ( x )"));
+    }
 
-    @Ignore("Pendiente 09: caracter invalido") @Test
-    public void test09InvalidCharacter() { fail("Implementar test09"); }
+    @Test
+    public void test09InvalidCharacter() {
+        assertTokens(List.of(
+                new Token(TokenType.IDENTIFIER, "abc", 0),
+                new Token(TokenType.ERROR, "@", 3),
+                new Token(TokenType.INTEGER, "5", 4)), lexer.tokenize("abc@5"));
+    }
 
-    @Ignore("Pendiente 10: independencia entre llamadas") @Test
-    public void test10ConsecutiveCalls() { fail("Implementar test10"); }
+    @Test
+    public void test10ConsecutiveCalls() {
+        lexer.tokenize("x");
+        assertTokens(List.of(new Token(TokenType.IDENTIFIER, "y", 0)), lexer.tokenize("y"));
+    }
+
+    private static void assertTokens(List<Token> expected, List<Token> actual) {
+        assertEquals(expected, actual);
+    }
 }

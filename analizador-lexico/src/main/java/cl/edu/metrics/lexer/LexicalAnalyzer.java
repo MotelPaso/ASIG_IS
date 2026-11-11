@@ -3,79 +3,80 @@ package cl.edu.metrics.lexer;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Implementacion inicial para evaluar por pruebas y metricas.
- * Revisar su comportamiento frente a la especificacion del laboratorio.
- */
 public class LexicalAnalyzer {
     private final KeywordCatalog catalog;
-    private String source = "";
-    private int cursor;
-    private final List<Token> tokens = new ArrayList<>();
-    private boolean debugEnabled;
-    private String lastReport = "";
 
     public LexicalAnalyzer(KeywordCatalog catalog) {
         this.catalog = catalog;
     }
 
     public List<Token> tokenize(String input) {
-        source = input;
-        cursor = 0;
-        while (cursor < source.length()) {
-            char current = source.charAt(cursor);
-            if (Character.isWhitespace(current)) {
+        List<Token> tokens = new ArrayList<>();
+        int cursor = 0;
+        while (cursor < input.length()) {
+            char current = input.charAt(cursor);
+            if (isWhitespace(current)) {
                 cursor++;
-            } else if (Character.isLetter(current)) {
-                readWord();
-            } else if (Character.isDigit(current)) {
-                readNumber();
-            } else if (current == '=') {
-                tokens.add(new Token(TokenType.ASSIGN, "=", cursor++));
-            } else if (current == '+') {
-                tokens.add(new Token(TokenType.PLUS, "+", cursor++));
-            } else if (current == '(') {
-                tokens.add(new Token(TokenType.LPAREN, "(", cursor++));
-            } else if (current == ')') {
-                tokens.add(new Token(TokenType.RPAREN, ")", cursor++));
-            } else if (current == ';') {
-                tokens.add(new Token(TokenType.SEMICOLON, ";", cursor++));
+            } else if (isIdentifierStart(current)) {
+                cursor = readWord(input, cursor, tokens);
+            } else if (isAsciiDigit(current)) {
+                cursor = readNumber(input, cursor, tokens);
             } else {
+                tokens.add(new Token(symbolType(current), String.valueOf(current), cursor));
                 cursor++;
             }
         }
-        if (debugEnabled) {
-            lastReport = "Tokens acumulados: " + tokens.size();
-        }
-        return new ArrayList<>(tokens);
+        return tokens;
     }
 
-    private void readWord() {
-        int start = cursor;
-        while (cursor < source.length() && Character.isLetterOrDigit(source.charAt(cursor))) {
+    private int readWord(String input, int start, List<Token> tokens) {
+        int cursor = start + 1;
+        while (cursor < input.length() && isIdentifierPart(input.charAt(cursor))) {
             cursor++;
         }
-        String word = source.substring(start, cursor);
-        TokenType type = (word.startsWith("let") || catalog.isKeyword(word))
-                ? TokenType.KEYWORD : TokenType.IDENTIFIER;
+        String word = input.substring(start, cursor);
+        TokenType type = catalog.isKeyword(word) ? TokenType.KEYWORD : TokenType.IDENTIFIER;
         tokens.add(new Token(type, word, start));
+        return cursor;
     }
 
-    private void readNumber() {
-        int start = cursor;
-        cursor++;
-        tokens.add(new Token(TokenType.INTEGER, source.substring(start, cursor), start));
+    private static int readNumber(String input, int start, List<Token> tokens) {
+        int cursor = start + 1;
+        while (cursor < input.length() && isAsciiDigit(input.charAt(cursor))) {
+            cursor++;
+        }
+        tokens.add(new Token(TokenType.INTEGER, input.substring(start, cursor), start));
+        return cursor;
     }
 
-    public void enableDebug(boolean enabled) {
-        debugEnabled = enabled;
+    private static TokenType symbolType(char current) {
+        return switch (current) {
+            case '=' -> TokenType.ASSIGN;
+            case '+' -> TokenType.PLUS;
+            case '(' -> TokenType.LPAREN;
+            case ')' -> TokenType.RPAREN;
+            case ';' -> TokenType.SEMICOLON;
+            default -> TokenType.ERROR;
+        };
     }
 
-    public String debugSummary() {
-        return debugEnabled ? lastReport : "Debug desactivado";
+    private static boolean isWhitespace(char current) {
+        return current == ' ' || current == '\t' || current == '\n' || current == '\r';
     }
 
-    public int countCharacters(String text) {
-        return text.length();
+    private static boolean isAsciiLetter(char current) {
+        return current >= 'A' && current <= 'Z' || current >= 'a' && current <= 'z';
+    }
+
+    private static boolean isAsciiDigit(char current) {
+        return current >= '0' && current <= '9';
+    }
+
+    private static boolean isIdentifierStart(char current) {
+        return isAsciiLetter(current) || current == '_';
+    }
+
+    private static boolean isIdentifierPart(char current) {
+        return isIdentifierStart(current) || isAsciiDigit(current);
     }
 }
