@@ -1,8 +1,8 @@
 # Guía de laboratorio: calidad de un analizador léxico
 
-**Asignatura:** Ingeniería de Software · 
+**Asignatura:** Ingeniería de Software ·
 
-**Lenguaje:** Java 17 · 
+**Lenguaje:** Java 17 ·
 
 **Herramientas:** Maven, JUnit 4, Mockito ·
 
@@ -18,16 +18,16 @@ Al finalizar deben: (a) escribir al menos diez pruebas JUnit 4; (b) usar Mockito
 
 El analizador recibe un `String` y devuelve una `List<Token>`. Cada `Token` tiene `type`, `lexeme` y `position` (índice **base cero** en el texto original). El token debe cubrir el lexema completo (coincidencia **más larga**). No se generan tokens para espacios, tabulaciones ni saltos de línea, pero estos sí influyen en `position`.
 
-| Tipo | Regla | Ejemplo |
-|---|---|---|
-| `KEYWORD` | Palabras completas `let`, `print` (sensibles a mayúsculas) | `let` |
-| `IDENTIFIER` | `[A-Za-z_][A-Za-z0-9_]*`, excepto las palabras reservadas exactas | `_total2` |
-| `INTEGER` | `[0-9]+` (todos los dígitos contiguos forman **un** token) | `2026` |
-| `ASSIGN` | `=` | `=` |
-| `PLUS` | `+` | `+` |
-| `LPAREN`, `RPAREN` | `(`, `)` | `(x)` |
-| `SEMICOLON` | `;` | `;` |
-| `ERROR` | Cada carácter no reconocido produce un token de error de un carácter | `@` |
+| Tipo               | Regla                                                                | Ejemplo   |
+| ------------------ | -------------------------------------------------------------------- | --------- |
+| `KEYWORD`          | Palabras completas `let`, `print` (sensibles a mayúsculas)           | `let`     |
+| `IDENTIFIER`       | `[A-Za-z_][A-Za-z0-9_]*`, excepto las palabras reservadas exactas    | `_total2` |
+| `INTEGER`          | `[0-9]+` (todos los dígitos contiguos forman **un** token)           | `2026`    |
+| `ASSIGN`           | `=`                                                                  | `=`       |
+| `PLUS`             | `+`                                                                  | `+`       |
+| `LPAREN`, `RPAREN` | `(`, `)`                                                             | `(x)`     |
+| `SEMICOLON`        | `;`                                                                  | `;`       |
+| `ERROR`            | Cada carácter no reconocido produce un token de error de un carácter | `@`       |
 
 **Alcance:** Solo caracteres ASCII para letras y dígitos; no se exigen comentarios, decimales, operadores adicionales ni análisis sintáctico. `null` queda fuera del contrato de esta práctica. Cada llamada a `tokenize` debe ser **independiente de llamadas previas**.
 
@@ -55,18 +55,18 @@ SEMICOLON   ;      22
 
 Se entrega la clase `LexicalAnalyzerStudentTest` con diez métodos pendientes. **Retire `@Ignore` de cada uno al implementarlo**, agregue aserciones y registre el resultado antes y después de corregir el código. Se indica el comportamiento esperado, **no el resultado de la versión defectuosa**.
 
-| N.º | Entrada | Resultado o condición esperada |
-|---|---|---|
-| 1 | `""` | Lista vacía, longitud 0 |
-| 2 | `"let print"` | Dos `KEYWORD`, posiciones 0 y 4 |
-| 3 | `"letter"` | Un `IDENTIFIER`, lexema completo `letter` |
-| 4 | `"_total2"` | Un `IDENTIFIER` en posición 0 |
-| 5 | `"2026"` | Un único `INTEGER` con lexema `2026` |
-| 6 | `"=+();"` | Cinco tokens de símbolos, posiciones 0,1,2,3,4 |
-| 7 | `"let total = 12 + valor;"` | Los siete tokens de la tabla de ejemplo |
-| 8 | `" \nprint ( x )"` | `KEYWORD print@2`, `LPAREN (@8`, `IDENTIFIER x@10`, `RPAREN )@12` |
-| 9 | `"abc@5"` | `IDENTIFIER abc@0`, `ERROR @@3`, `INTEGER 5@4` |
-| 10 | Primero `"x"`; después `"y"` **con el mismo objeto** | En la segunda llamada solo aparece `IDENTIFIER y@0` |
+| N.º | Entrada                                              | Resultado o condición esperada                                    |
+| --- | ---------------------------------------------------- | ----------------------------------------------------------------- |
+| 1   | `""`                                                 | Lista vacía, longitud 0                                           |
+| 2   | `"let print"`                                        | Dos `KEYWORD`, posiciones 0 y 4                                   |
+| 3   | `"letter"`                                           | Un `IDENTIFIER`, lexema completo `letter`                         |
+| 4   | `"_total2"`                                          | Un `IDENTIFIER` en posición 0                                     |
+| 5   | `"2026"`                                             | Un único `INTEGER` con lexema `2026`                              |
+| 6   | `"=+();"`                                            | Cinco tokens de símbolos, posiciones 0,1,2,3,4                    |
+| 7   | `"let total = 12 + valor;"`                          | Los siete tokens de la tabla de ejemplo                           |
+| 8   | `" \nprint ( x )"`                                   | `KEYWORD print@2`, `LPAREN (@8`, `IDENTIFIER x@10`, `RPAREN )@12` |
+| 9   | `"abc@5"`                                            | `IDENTIFIER abc@0`, `ERROR @@3`, `INTEGER 5@4`                    |
+| 10  | Primero `"x"`; después `"y"` **con el mismo objeto** | En la segunda llamada solo aparece `IDENTIFIER y@0`               |
 
 Los tests deben comparar **salida observada con salida esperada**; un `assertNotNull` aislado no es suficiente. Pueden crear funciones auxiliares de aserción para disminuir duplicación en los tests. **Se permiten pruebas adicionales** de mayúsculas, frontera entre palabras, entradas repetidas, números al comienzo y errores consecutivos.
 
@@ -136,15 +136,15 @@ Calcule por **método**, no solamente por clase. Para el código del laboratorio
 
 ### Tabla obligatoria de resultados
 
-| Indicador | Inicial | Final | Interpretación |
-|---|---:|---:|---|
-| LOC de `LexicalAnalyzer` | ... | ... | ... |
-| LOC total del paquete | ... | ... | ... |
-| LCOM1 de `LexicalAnalyzer` | ... | ... | ... |
-| CBO de `LexicalAnalyzer` | ... | ... | ... |
-| CC máxima entre sus métodos | ... | ... | ... |
-| Método con mayor CC | ... | ... | ... |
-| Tests aprobados / ejecutados | ... | ... | ... |
+| Indicador                    | Inicial | Final | Interpretación |
+| ---------------------------- | ------: | ----: | -------------- |
+| LOC de `LexicalAnalyzer`     |     ... |   ... | ...            |
+| LOC total del paquete        |     ... |   ... | ...            |
+| LCOM1 de `LexicalAnalyzer`   |     ... |   ... | ...            |
+| CBO de `LexicalAnalyzer`     |     ... |   ... | ...            |
+| CC máxima entre sus métodos  |     ... |   ... | ...            |
+| Método con mayor CC          |     ... |   ... | ...            |
+| Tests aprobados / ejecutados |     ... |   ... | ...            |
 
 Si reemplaza o divide la clase en varias, **no compare ingenuamente LCOM1 o CBO de clases distintas**: describa la nueva arquitectura, indique para qué clase se calculó cada valor y presente además métricas por clase. LCOM1 **depende del número de métodos**, de modo que la comparación en valores brutos puede ser engañosa.
 

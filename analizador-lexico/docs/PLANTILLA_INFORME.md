@@ -1,8 +1,8 @@
 # Informe de laboratorio — Analizador léxico
 
-**Integrantes:**  
-**Fecha:**  
-**IDE y versión de Java:**
+**Integrantes:** Paulo Araya
+**Fecha:** 11 de Noviembre de 2026
+**IDE y versión de Java:** Visual Studio Code usando Java 27.
 
 ## 1. Diagnóstico inicial
 
@@ -11,17 +11,17 @@ Descripción de la arquitectura y comportamiento observado.
 ## 2. Pruebas automatizadas
 
 | Test | Entrada | Esperado | Inicial: pasa/falla | Final: pasa/falla | Evidencia |
-|---|---|---|---|---|---|
-| 01 | | | | | |
-| 02 | | | | | |
-| 03 | | | | | |
-| 04 | | | | | |
-| 05 | | | | | |
-| 06 | | | | | |
-| 07 | | | | | |
-| 08 | | | | | |
-| 09 | | | | | |
-| 10 | | | | | |
+| ---- | ------- | -------- | ------------------- | ----------------- | --------- |
+| 01   |         |          |                     |                   |           |
+| 02   |         |          |                     |                   |           |
+| 03   |         |          |                     |                   |           |
+| 04   |         |          |                     |                   |           |
+| 05   |         |          |                     |                   |           |
+| 06   |         |          |                     |                   |           |
+| 07   |         |          |                     |                   |           |
+| 08   |         |          |                     |                   |           |
+| 09   |         |          |                     |                   |           |
+| 10   |         |          |                     |                   |           |
 
 ### Prueba con Mockito
 
@@ -30,8 +30,8 @@ Descripción de la arquitectura y comportamiento observado.
 ## 3. Correcciones y refactorizaciones
 
 | Método / clase | Problema | Cambio | Justificación | Test que lo respalda |
-|---|---|---|---|---|
-| | | | | |
+| -------------- | -------- | ------ | ------------- | -------------------- |
+|                |          |        |               |                      |
 
 ## 4. Métricas
 
@@ -44,3 +44,7 @@ Argumentar con evidencias, reconocer compromisos y límites de las métricas.
 ## 6. Cómo reproducir
 
 Comando de ejecución, versión de JDK y pruebas; añadir captura o salida de `mvn test`.
+
+cd /home/motelpaso/Work/ASIG_IS/analizador-lexico/docs
+pandoc INFORME.md -o INFORME.pdf --pdf-engine=pdflatex
+pdfinfo INFORME.pdf | grep -E "Pages|Page size"
